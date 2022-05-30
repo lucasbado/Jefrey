@@ -43,6 +43,18 @@ while parar == False:
                 res = rec.recognize_google(audio, language="pt-BR")
                 print(res)
 
+            if "não" in res:
+                robo.say("Que pena, você está mal, quer que eu ligue pra alguem?")
+                robo.runAndWait()
+                audio = rec.listen(source)
+                res = rec.recognize_google(audio, language="pt-BR")
+                print(res)
+                
+                if "sim" in res:
+                    robo.say("Ok, ligando para contato emergencia")
+                    robo.runAndWait()
+                    webbrowser.open("https://www.whatsapp.com/")
+
                 if "pesquisar" in res:
                     robo.say("O que você quer pesquisar?")
                     robo.runAndWait()
